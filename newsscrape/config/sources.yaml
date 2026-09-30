@@ -1,0 +1,41 @@
+# NewsScrape API - source definitions
+#
+# Each source defines how to extract articles from one website.
+# To add a new site, append a new block below. No code changes needed.
+
+defaults:
+  rate_limit_seconds: 1.0
+  timeout_seconds: 15
+  max_articles_per_source: 20
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+
+sources:
+  - name: hackernews
+    url: "https://news.ycombinator.com/"
+    item_selector: "tr.athing"
+    title_selector: "span.titleline > a"
+    link_selector: "span.titleline > a"
+    author_selector: null
+    date_selector: null
+    summary_selector: null
+    base_url: "https://news.ycombinator.com/"
+
+  - name: bbc_news
+    url: "https://feeds.bbci.co.uk/news/rss.xml"
+    item_selector: "item"
+    title_selector: "title"
+    link_selector: "link"
+    author_selector: null
+    date_selector: "pubDate"
+    summary_selector: "description"
+    base_url: ""
+
+  - name: the_verge
+    url: "https://www.theverge.com/rss/index.xml"
+    item_selector: "entry"
+    title_selector: "title"
+    link_selector: "link"
+    author_selector: "author > name"
+    date_selector: "published"
+    summary_selector: "summary"
+    base_url: ""
